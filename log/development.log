@@ -1975,3 +1975,31 @@ Can't verify CSRF token authenticity.
 Completed 201 Created in 16ms (Views: 1.1ms | ActiveRecord: 7.6ms | Allocations: 5533)
 
 
+Started GET "/" for ::1 at 2020-03-25 23:05:27 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 189)
+[Webpacker] Compiling...
+Started GET "/" for ::1 at 2020-03-25 23:05:32 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/srdjan/Desktop/Capstone_Support_Final/reaction_boilerplate/public/packs
+Completed 200 OK in 2381ms (Views: 2380.4ms | ActiveRecord: 0.0ms | Allocations: 9845)
+
+
+[Webpacker] Compiled all packs in /home/srdjan/Desktop/Capstone_Support_Final/reaction_boilerplate/public/packs
+Completed 200 OK in 7321ms (Views: 7317.1ms | ActiveRecord: 0.0ms | Allocations: 1726835)
+
+
+Started GET "/api/boards" for ::1 at 2020-03-25 23:05:34 +0100
+Processing by Api::BoardsController#index as JSON
+  Rendering api/boards/index.json.jbuilder
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/api/boards/index.json.jbuilder:1
+  Rendered api/boards/index.json.jbuilder (Duration: 8.1ms | Allocations: 3508)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 3.9ms | Allocations: 5514)
+
+
