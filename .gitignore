@@ -4,3 +4,4 @@ yarn.lock
 tmp
 log
 public/packs
+.DS_Store
