@@ -14,8 +14,15 @@ import apiClient from "../../lib/ApiClient";
 //   }
 // }
 
-const mapStateToProps = (state) => {};
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
+  return {
+    lists: state.lists.filter(
+      (list) => list.board_id == +ownProps.match.params.id
+    ),
+  };
+};
+
+const mapDispatchToProps = (_, ownProps) => {
   return {
     onFetchBoard: () => {
       actions.fetchBoard(+ownProps.match.params.id);
@@ -23,7 +30,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default BoardContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
+
+// export default BoardContainer;
 
 /*
 
@@ -44,4 +53,13 @@ Hierarchy
           - CardContainer
             - Card
 
+            
+TODO:
+- Implement apiClient.getBoard(id, callback(board))
+- Implement FETCH_BOARD_SUCCESS action type in lists.js reducer
+  - It will take lists from payload and separate out the lists (removing card)
+- Implement FETCH_BOARD_SUCCESS action type in cards.js reducer
+  - First, create reducer
+  - Then extract all cards, updating the state
+- Other stuff…
 */
