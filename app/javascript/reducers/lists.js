@@ -1,8 +1,9 @@
-const filterOutOldLists = (state, newLists) => {
-  // TODO: make this more efficient by using hash table
-  return state.filter((oldList) => {
-    return !newLists.some((newList) => newList.id == oldList.id);
-  });
+const filterOutOldLists = (state, lists) => {
+  const set = new Set();
+
+  lists.forEach(({ id }) => set.add(id));
+
+  return state.filter(({ id }) => !set.has(id));
 };
 
 const removeCardsFromLists = (lists) => {
