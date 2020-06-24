@@ -55,10 +55,10 @@ Hierarchy
             
 TODO:
 x Implement apiClient.getBoard(id, callback(board))
-- Implement FETCH_BOARD_SUCCESS action type in lists.js reducer
-  - It will take lists from payload and separate out the lists (removing card)
-- Implement FETCH_BOARD_SUCCESS action type in cards.js reducer
-  - First, create reducer
-  - Then extract all cards, updating the state
+x Implement FETCH_BOARD_SUCCESS action type in lists.js reducer
+  x It will take lists from payload and separate out the lists (removing card)
+x Implement FETCH_BOARD_SUCCESS action type in cards.js reducer
+  x First, create reducer
+  x Then extract all cards, updating the state
 - Other stuff…
 */
