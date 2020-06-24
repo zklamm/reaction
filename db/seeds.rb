@@ -11,8 +11,8 @@
 board1 = Board.create({title: "First board"})
 # board2 = Board.create({title: "Second board"})
 
-list1 = Board.lists.create(title: 'First list')
-list2 = Board.lists.create(title: 'Second list')
+list1 = board1.lists.create(title: 'First list')
+list2 = board1.lists.create(title: 'Second list')
 
 list1_card1 = list1.cards.create(title: 'First card on first list', description: "Card 1", labels: ['blue'], due_date: '01-04-2021')
 list1_card2 = list1.cards.create(title: 'Second card on first list', description: "Card 2", labels: ['green'], due_date: '10-10-2020')
