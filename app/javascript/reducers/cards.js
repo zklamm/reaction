@@ -9,7 +9,7 @@ const filterOutOldCards = (state, cards) => {
 export default function cards(state = [], action) {
   switch (action.type) {
     case "FETCH_BOARD_SUCCESS":
-      const cards = action.payload.boards.lists.flatMap(({ cards }) => cards);
+      const cards = action.payload.board.lists.flatMap(({ cards }) => cards);
       return filterOutOldCards(state, cards).concat(cards);
     default:
       return state;
