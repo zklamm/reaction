@@ -6,7 +6,7 @@ export function fetchBoardsRequest() {
 }
 
 export function fetchBoardRequest() {
-  //
+  return { type: types.FETCH_BOARD_REQUEST };
 }
 
 export function fetchBoardSuccess(board) {
