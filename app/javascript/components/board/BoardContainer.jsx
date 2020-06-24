@@ -2,7 +2,6 @@ import React from "react";
 import Board from "./Board.jsx";
 import * as actions from "../../actions/BoardActions";
 import { connect } from "react-redux";
-import apiClient from "../../lib/ApiClient";
 
 // class BoardContainer extends React.Component {
 //   handleEditBoardName = () => {
@@ -22,10 +21,10 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (_, ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onFetchBoard: () => {
-      actions.fetchBoard(+ownProps.match.params.id);
+      dispatch(actions.fetchBoard(+ownProps.match.params.id));
     },
   };
 };
@@ -55,7 +54,7 @@ Hierarchy
 
             
 TODO:
-- Implement apiClient.getBoard(id, callback(board))
+x Implement apiClient.getBoard(id, callback(board))
 - Implement FETCH_BOARD_SUCCESS action type in lists.js reducer
   - It will take lists from payload and separate out the lists (removing card)
 - Implement FETCH_BOARD_SUCCESS action type in cards.js reducer
