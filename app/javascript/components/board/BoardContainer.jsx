@@ -16,8 +16,11 @@ import { connect } from "react-redux";
 const mapStateToProps = (state, ownProps) => {
   return {
     lists: state.lists.filter(
-      (list) => list.board_id == +ownProps.match.params.id
+      (list) => list.board_id === +ownProps.match.params.id
     ),
+    board: state.boards.find((board) => {
+      return board.id === +ownProps.match.params.id;
+    }),
   };
 };
 
@@ -52,7 +55,7 @@ Hierarchy
           - CardContainer
             - Card
 
-            
+
 TODO:
 x Implement apiClient.getBoard(id, callback(board))
 x Implement FETCH_BOARD_SUCCESS action type in lists.js reducer

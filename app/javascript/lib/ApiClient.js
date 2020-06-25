@@ -19,21 +19,21 @@ axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers.common["Accept"] = "application/json";
 
 const apiClient = {
-  getBoards: function (callback) {
+  getBoards: function(callback) {
     return axios
       .get(routes.BOARDS_INDEX_URL)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
-  getBoard: function (id, callback) {
+  getBoard: function(id, callback) {
     return axios
-      .get(routes.GET_BOARD_URL.replace(":id", id))
+      .get(routes.getBoardURL(id))
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
-  createBoard: function (board, callback) {
+  createBoard: function(board, callback) {
     return axios
       .post(routes.CREATE_BOARD_URL, { board })
       .then(unwrapData)
