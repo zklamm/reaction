@@ -6,7 +6,7 @@ const ExistingLists = ({ lists }) => {
     <div id="existing-lists" className="existing-lists">
       {lists.map((list) => (
         // TODO: add unique key
-        <List {...list} />
+        <List {...list} key={list.id} />
       ))}
     </div>
   );
