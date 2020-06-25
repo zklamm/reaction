@@ -14,7 +14,7 @@ export function fetchBoardSuccess(board) {
 }
 
 export function fetchBoardsSuccess(boards) {
-  return { type: types.FETCH_BOARDS_SUCCESS, boards };
+  return { type: types.FETCH_BOARDS_SUCCESS, payload: { boards } };
 }
 
 export function createBoardRequest() {
@@ -22,31 +22,52 @@ export function createBoardRequest() {
 }
 
 export function createBoardSuccess(board) {
-  return { type: types.CREATE_BOARD_SUCCESS, board: board };
+  return { type: types.CREATE_BOARD_SUCCESS, payload: { board } };
+}
+
+export function createListRequest() {
+  return { type: types.CREATE_LIST_REQUEST };
+}
+
+export function createListSuccess(list) {
+  return { type: types.CREATE_LIST_SUCCESS, payload: { list } };
 }
 
 export function fetchBoards() {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch(fetchBoardsRequest());
     apiClient.getBoards((boards) => dispatch(fetchBoardsSuccess(boards)));
   };
 }
 
 export function fetchBoard(id) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch(fetchBoardRequest());
     apiClient.getBoard(id, (board) => dispatch(fetchBoardSuccess(board)));
   };
 }
 
 export function createBoard(board, callback) {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch(createBoardRequest());
     apiClient.createBoard(board, (newBoard) => {
       dispatch(createBoardSuccess(newBoard));
 
       if (callback) {
         callback(newBoard);
+      }
+    });
+  };
+}
+
+export function createList(list, callback) {
+  return function(dispatch) {
+    dispatch(createListRequest());
+    apiClient.createList(list, (newList) => {
+      dispatch(createListSuccess(newList));
+
+      if (callback) {
+        callback(newList);
       }
     });
   };
