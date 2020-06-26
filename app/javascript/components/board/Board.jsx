@@ -4,7 +4,6 @@ import ListContainer from "../list/ListContainer";
 
 class Board extends Component {
   componentDidMount() {
-    console.log("Board mounted");
     this.props.onFetchBoard();
   }
 
