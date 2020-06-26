@@ -1,4 +1,6 @@
 import React from "react";
+import ExistingCardsContainer from "../card/ExistingCardsContainer";
+import AddCardContainer from "../card/AddCardContainer";
 
 const List = ({ title, id }) => {
   return (
