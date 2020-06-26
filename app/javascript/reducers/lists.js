@@ -19,6 +19,8 @@ export default function lists(state = [], action) {
       return filterOutOldLists(state, listsWithoutCards).concat(
         listsWithoutCards
       );
+    case "CREATE_LIST_SUCCESS":
+      return state.concat(action.payload.list);
     default:
       return state;
   }

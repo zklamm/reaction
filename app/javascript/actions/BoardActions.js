@@ -60,10 +60,10 @@ export function createBoard(board, callback) {
   };
 }
 
-export function createList(list, callback) {
+export function createList(list, boardId, callback) {
   return function(dispatch) {
     dispatch(createListRequest());
-    apiClient.createList(list, (newList) => {
+    apiClient.createList(list, boardId, (newList) => {
       dispatch(createListSuccess(newList));
 
       if (callback) {

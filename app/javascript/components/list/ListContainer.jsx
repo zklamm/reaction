@@ -6,7 +6,7 @@ const ListContainer = ({ boardId }) => {
   return (
     <div id="list-container" className="list-container">
       <ExistingListsContainer boardId={boardId} />
-      <AddListContainer />
+      <AddListContainer boardId={boardId} />
     </div>
   );
 };
