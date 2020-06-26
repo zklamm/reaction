@@ -6,4 +6,28 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   // ...
 };
 
-export default connect(null, mapDispatchToProps)(AddList);
+const mapStateToProps = (state, ownProps) => {
+  // ...
+};
+
+class AddListContainer extends React.Component {
+  state = {
+    addInputOpen: false,
+  };
+
+  handleAddClick = () => {};
+
+  handleSubmitClick = () => {};
+
+  handleCancelAddClick = () => {};
+
+  render() {
+    <AddList
+      onAddClick={this.handleAddClick}
+      onSubmitClick={this.handleSubmitClick}
+      onCancelAddClick={this.handleCancelAddClick}
+    />;
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddListContainer);
