@@ -1,12 +1,7 @@
 import React from "react";
-import { MONTHS } from "../../constants/Months";
+import { dueClass, formatDate } from "../../constants/DateFormat";
 
-const formatDate = (date_str) => {
-  const date = new Date(date_str);
-  return `${MONTHS[date.getMonth()]} ${date.getDate()}`;
-};
-
-const Card = ({ labels, cardId, title, dueDate, isDescription }) => {
+const Card = ({ labels, cardId, title, dueDate, isDescription, completed }) => {
   return (
     <div className="card-background">
       <div className="card ">
@@ -18,7 +13,7 @@ const Card = ({ labels, cardId, title, dueDate, isDescription }) => {
           <p>{title}</p>
         </div>
         <div className="card-icons">
-          <i className="clock-icon sm-icon overdue-recent completed">
+          <i className={`clock-icon sm-icon ${dueClass(dueDate, completed)}`}>
             {formatDate(dueDate)}
           </i>
           {isDescription ? <i className="description-icon sm-icon"></i> : null}

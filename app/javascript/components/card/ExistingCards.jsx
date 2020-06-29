@@ -11,6 +11,7 @@ const ExistingCards = ({ cards }) => {
           title={card.title}
           dueDate={card.due_date}
           isDescription={!!card.description}
+          completed={false}
           key={card.id}
         />
       ))}
