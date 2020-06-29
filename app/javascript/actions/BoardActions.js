@@ -33,6 +33,10 @@ export function createListSuccess(list) {
   return { type: types.CREATE_LIST_SUCCESS, payload: { list } };
 }
 
+export function updateListSuccess(updatedList) {
+  return { type: types.UPDATE_LIST_SUCCESS, payload: { list: updatedList } };
+}
+
 export function fetchBoards() {
   return function(dispatch) {
     dispatch(fetchBoardsRequest());
@@ -72,3 +76,15 @@ export function createList(list, boardId, callback) {
     });
   };
 }
+
+export function updateList(list, listId, callback) {
+  return function(dispatch) {
+    apiClient.updateList(list, listId, (updatedList) => {
+      dispatch(updateListSuccess(updatedList));
+
+      if (callback) {
+        callback();
+      }
+    });
+  };
+};
