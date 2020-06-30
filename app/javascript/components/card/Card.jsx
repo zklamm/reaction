@@ -7,8 +7,11 @@ const Card = ({ labels, cardId, title, dueDate, isDescription, completed }) => {
       <div className="card ">
         <i className="edit-toggle edit-icon sm-icon"></i>
         <div className="card-info">
-          {labels.map((label) => (
-            <div className={`card-label ${label} colorblindable`}></div>
+          {labels.map((label, idx) => (
+            <div
+              className={`card-label ${label} colorblindable`}
+              key={idx}
+            ></div>
           ))}
           <p>{title}</p>
         </div>
