@@ -1,11 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AddList from "./AddList";
-import * as actions from "../../actions/BoardActions";
-
-// const mapStateToProps = (state, ownProps) => {
-//   return { boardId: ownProps.boardId };
-// };
+import * as actions from "../../actions/ListActions";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -38,14 +34,13 @@ class AddListContainer extends React.Component {
   handleSubmitClick = () => {
     this.toggleInput();
 
-    //{"board_id":5,"list":{"title":"foobar"}}
     const newList = { title: this.state.title };
 
     this.props.onSubmit(newList, () => {
       this.setState({
         title: "",
       });
-      this.props.onCloseClick(new Event("click"));
+      this.toggleInput();
     });
   };
 

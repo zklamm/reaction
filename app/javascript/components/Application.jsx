@@ -9,7 +9,11 @@ const Application = () => {
     <div>
       <TopNav />
       <Route path="/" exact component={BoardsDashboardContainer} />
-      <Route path="/boards/:id" exact component={BoardContainer} />
+      {/*
+      TODO: need to differentiate board and card id
+      <Route path="/cards/:id" exact component={CardModalContainer} />
+    */}
+      <Route path="/(boards|cards)/:id" exact component={BoardContainer} />
     </div>
   );
 };
