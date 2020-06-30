@@ -1,7 +1,7 @@
 import React from "react";
 import EditableListTitleContainer from "./EditableListTitleContainer";
 import ExistingCardsContainer from "../card/ExistingCardsContainer";
-import AddCard from "../card/AddCard";
+import AddCardContainer from "../card/AddCardContainer";
 
 const List = ({
   title,
@@ -29,7 +29,7 @@ const List = ({
             </div>
           </div>
           <ExistingCardsContainer listId={id} />
-          <AddCard
+          <AddCardContainer
             listId={id}
             isDropdownActive={isDropdownActive}
             onAddCardClick={onAddCardClick}

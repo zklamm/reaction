@@ -7,8 +7,19 @@ class AddCard extends React.Component {
 
   handleTitleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      title: e.target.value,
     });
+  };
+
+  handleReset = () => {
+    this.props.onCancelAddCardClick();
+    this.setState({
+      title: "",
+    });
+  };
+
+  handleSubmitNewCard = () => {
+    this.props.onSubmitNewCard(this.state.title, this.handleReset);
   };
 
   render() {
@@ -21,12 +32,16 @@ class AddCard extends React.Component {
         >
           <div className="card">
             <div className="card-info"></div>
-            <textarea onChange={this.handleTitleChange} name="add-card">
-              {this.state.title}
-            </textarea>
+            <textarea
+              onChange={this.handleTitleChange}
+              name="add-card"
+              defaultValue={this.state.title}
+            ></textarea>
             <div className="members"></div>
           </div>
-          <a className="button">Add</a>
+          <a onClick={this.handleSubmitNewCard} className="button">
+            Add
+          </a>
           <i
             onClick={this.props.onCancelAddCardClick}
             className="x-icon icon"

@@ -37,6 +37,14 @@ export function updateListSuccess(updatedList) {
   return { type: types.UPDATE_LIST_SUCCESS, payload: { list: updatedList } };
 }
 
+export function createCardRequest() {
+  return { type: types.CREATE_CARD_REQUEST };
+}
+
+export function createCardSuccess(card) {
+  return { type: types.CREATE_CARD_SUCCESS, payload: { card } };
+}
+
 export function fetchBoards() {
   return function(dispatch) {
     dispatch(fetchBoardsRequest());
@@ -87,4 +95,17 @@ export function updateList(list, listId, callback) {
       }
     });
   };
-};
+}
+
+export function createCard(card, listId, callback) {
+  return function(dispatch) {
+    dispatch(createCardRequest());
+    apiClient.createCard(card, listId, (newCard) => {
+      dispatch(createCardSuccess(newCard));
+
+      if (callback) {
+        callback();
+      }
+    });
+  };
+}

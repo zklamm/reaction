@@ -1,3 +1,5 @@
+import * as types from "../constants/ActionTypes";
+
 const filterOutOldCards = (state, cards) => {
   const set = new Set();
 
@@ -8,9 +10,11 @@ const filterOutOldCards = (state, cards) => {
 
 export default function cards(state = [], action) {
   switch (action.type) {
-    case "FETCH_BOARD_SUCCESS":
+    case types.FETCH_BOARD_SUCCESS:
       const cards = action.payload.board.lists.flatMap(({ cards }) => cards);
       return filterOutOldCards(state, cards).concat(cards);
+    case types.CREATE_CARD_SUCCESS:
+      return state.concat(action.payload.card);
     default:
       return state;
   }
