@@ -44,6 +44,7 @@ class EditableListTitle extends React.Component {
             type="text"
             name="title"
             value={this.state.title}
+            autoFocus
           />
         ) : (
           <p onClick={this.handleTitleClick} className="list-title">
