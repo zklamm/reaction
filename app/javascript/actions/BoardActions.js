@@ -25,26 +25,6 @@ export function createBoardSuccess(board) {
   return { type: types.CREATE_BOARD_SUCCESS, payload: { board } };
 }
 
-export function createListRequest() {
-  return { type: types.CREATE_LIST_REQUEST };
-}
-
-export function createListSuccess(list) {
-  return { type: types.CREATE_LIST_SUCCESS, payload: { list } };
-}
-
-export function updateListSuccess(updatedList) {
-  return { type: types.UPDATE_LIST_SUCCESS, payload: { list: updatedList } };
-}
-
-export function createCardRequest() {
-  return { type: types.CREATE_CARD_REQUEST };
-}
-
-export function createCardSuccess(card) {
-  return { type: types.CREATE_CARD_SUCCESS, payload: { card } };
-}
-
 export function fetchBoards() {
   return function(dispatch) {
     dispatch(fetchBoardsRequest());
@@ -67,44 +47,6 @@ export function createBoard(board, callback) {
 
       if (callback) {
         callback(newBoard);
-      }
-    });
-  };
-}
-
-export function createList(list, boardId, callback) {
-  return function(dispatch) {
-    dispatch(createListRequest());
-    apiClient.createList(list, boardId, (newList) => {
-      dispatch(createListSuccess(newList));
-
-      if (callback) {
-        callback(newList);
-      }
-    });
-  };
-}
-
-export function updateList(list, listId, callback) {
-  return function(dispatch) {
-    apiClient.updateList(list, listId, (updatedList) => {
-      dispatch(updateListSuccess(updatedList));
-
-      if (callback) {
-        callback();
-      }
-    });
-  };
-}
-
-export function createCard(card, listId, callback) {
-  return function(dispatch) {
-    dispatch(createCardRequest());
-    apiClient.createCard(card, listId, (newCard) => {
-      dispatch(createCardSuccess(newCard));
-
-      if (callback) {
-        callback();
       }
     });
   };
