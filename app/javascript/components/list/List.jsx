@@ -1,11 +1,21 @@
 import React from "react";
 import EditableListTitleContainer from "./EditableListTitleContainer";
 import ExistingCardsContainer from "../card/ExistingCardsContainer";
-import AddCardContainer from "../card/AddCardContainer";
+import AddCard from "../card/AddCard";
 
-const List = ({ title, id }) => {
+const List = ({
+  title,
+  id,
+  isDropdownActive,
+  onAddCardClick,
+  onCancelAddCardClick,
+}) => {
   return (
-    <div className="list-wrapper">
+    <div
+      className={`list-wrapper ${
+        isDropdownActive ? "add-dropdown-active" : ""
+      }`}
+    >
       <div className="list-background">
         <div className="list">
           <a className="more-icon sm-icon" href=""></a>
@@ -19,7 +29,12 @@ const List = ({ title, id }) => {
             </div>
           </div>
           <ExistingCardsContainer listId={id} />
-          <AddCardContainer listId={id} />
+          <AddCard
+            listId={id}
+            isDropdownActive={isDropdownActive}
+            onAddCardClick={onAddCardClick}
+            onCancelAddCardClick={onCancelAddCardClick}
+          />
         </div>
       </div>
     </div>
