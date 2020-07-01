@@ -4,16 +4,20 @@ import ListContainer from "../list/ListContainer";
 
 class Board extends Component {
   componentDidMount() {
-    this.props.onFetchBoard();
+    if (this.props.boardId) {
+      this.props.onFetchBoard(this.props.boardId);
+    }
   }
 
-  /*
-      Header
-      ListContainer
-      Sidebar
-  */
+  componentDidUpdate(prevProps) {
+    if (prevProps.boardId !== this.props.boardId && this.props.boardId) {
+      this.props.onFetchBoard(this.props.boardId);
+    }
+  }
 
   render() {
+    // console.log(this.props.boardId);
+    // console.log(this.props.board);
     if (this.props.board) {
       return (
         <React.Fragment>
