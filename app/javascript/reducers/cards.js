@@ -15,6 +15,10 @@ export default function cards(state = [], action) {
       return filterOutOldCards(state, cards).concat(cards);
     case types.CREATE_CARD_SUCCESS:
       return state.concat(action.payload.card);
+    case types.FETCH_CARD_SUCCESS:
+      return filterOutOldCards(state, [action.payload.card]).concat(
+        action.payload.card
+      );
     default:
       return state;
   }
