@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import EditableCardTitle from "./EditableCardTitle";
 import { dueClass, longFormatDate } from "../../helpers/DateFormat";
 
 class CardModal extends React.Component {
   componentDidMount() {
     this.props.onFetchCard();
   }
+
+  handleUpdateTitle = (title) => {
+    this.props.onUpdateCard({ title });
+  };
 
   render() {
     if (!this.props.card) return null;
@@ -19,11 +24,10 @@ class CardModal extends React.Component {
           </Link>
           <header>
             <i className="card-icon icon .close-modal"></i>
-            <textarea
-              className="list-title"
-              style={{ height: "45px" }}
-              defaultValue={this.props.card.title}
-            ></textarea>
+            <EditableCardTitle
+              title={this.props.card.title}
+              onUpdateTitle={this.handleUpdateTitle}
+            />
             <p>
               in list <a className="link">Stuff to try (this is a list)</a>
               <i className="sub-icon sm-icon"></i>
