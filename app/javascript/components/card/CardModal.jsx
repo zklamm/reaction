@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableCardTitle from "./EditableCardTitle";
+import EditableCardDescription from "./EditableCardDescription";
 import { dueClass, longFormatDate } from "../../helpers/DateFormat";
 
 class CardModal extends React.Component {
@@ -10,6 +11,10 @@ class CardModal extends React.Component {
 
   handleUpdateTitle = (title) => {
     this.props.onUpdateCard({ title });
+  };
+
+  handleUpdateDescription = (description, callback) => {
+    this.props.onUpdateCard({ description }, callback);
   };
 
   render() {
@@ -74,21 +79,10 @@ class CardModal extends React.Component {
                     </div>
                   </li>
                 </ul>
-                <form className="description">
-                  <p>Description</p>
-                  <span id="description-edit" className="link">
-                    Edit
-                  </span>
-                  <p className="textarea-overlay">
-                    Cards have a symbol to indicate if they contain a
-                    description.
-                  </p>
-                  <p id="description-edit-options" className="hidden">
-                    You have unsaved edits on this field.{" "}
-                    <span className="link">View edits</span> -{" "}
-                    <span className="link">Discard</span>
-                  </p>
-                </form>
+                <EditableCardDescription
+                  description={this.props.card.description}
+                  onDescriptionChange={this.handleDescriptionChange}
+                />
               </li>
               <li className="comment-section">
                 <h2 className="comment-icon icon">Add Comment</h2>
