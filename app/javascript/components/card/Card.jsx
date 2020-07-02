@@ -1,5 +1,5 @@
 import React from "react";
-import { dueClass, formatDate } from "../../constants/DateFormat";
+import { dueClass, formatDate } from "../../helpers/DateFormat";
 import { Link } from "react-router-dom";
 
 const Card = ({ labels, cardId, title, dueDate, isDescription, completed }) => {
