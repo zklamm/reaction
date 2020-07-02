@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { dueClass, longFormatDate } from "../../helpers/DateFormat";
 
 class CardModal extends React.Component {
   componentDidMount() {
@@ -7,25 +8,21 @@ class CardModal extends React.Component {
   }
 
   render() {
+    if (!this.props.card) return null;
+
     return (
       <div id="modal-container">
         <div className="screen"></div>
         <div id="modal">
-          {/* Render a dummy 'x' button until full card info is fetched from the server */}
-          {this.props.card ? (
-            <Link to={`/boards/${this.props.card.board_id}`}>
-              <i className="x-icon icon close-modal"></i>
-            </Link>
-          ) : (
+          <Link to={`/boards/${this.props.card.board_id}`}>
             <i className="x-icon icon close-modal"></i>
-          )}
+          </Link>
           <header>
             <i className="card-icon icon .close-modal"></i>
             <textarea
               className="list-title"
               style={{ height: "45px" }}
-              defaultValue="Cards do many cool things. Click on this card to open it and learn
-            more..."
+              defaultValue={this.props.card.title}
             ></textarea>
             <p>
               in list <a className="link">Stuff to try (this is a list)</a>
