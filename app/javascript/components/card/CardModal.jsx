@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class CardModal extends React.Component {
   componentDidMount() {
@@ -10,7 +11,14 @@ class CardModal extends React.Component {
       <div id="modal-container">
         <div className="screen"></div>
         <div id="modal">
-          <i className="x-icon icon close-modal"></i>
+          {/* Render a dummy 'x' button until full card info is fetched from the server */}
+          {this.props.card ? (
+            <Link to={`/boards/${this.props.card.board_id}`}>
+              <i className="x-icon icon close-modal"></i>
+            </Link>
+          ) : (
+            <i className="x-icon icon close-modal"></i>
+          )}
           <header>
             <i className="card-icon icon .close-modal"></i>
             <textarea
