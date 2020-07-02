@@ -25,7 +25,7 @@ class Api::ListsController < ApplicationController
       render 'api/shared/error', status: :unprocessable_entity
     end
   rescue ActiveRecord::RecordNotFound
-    @error = "Invalid board data provided"
+    @error = "Invalid list data provided"
     render 'api/shared/error', status: 404
   end
 
