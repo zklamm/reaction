@@ -1,20 +1,5 @@
 import moment from "moment";
 
-export const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
 export const dueClass = (dueDate, completed) => {
   const diff = moment(dueDate).diff(new Date(), "days");
 
@@ -32,6 +17,15 @@ export const dueClass = (dueDate, completed) => {
 };
 
 export const formatDate = (date_str) => {
-  const date = new Date(date_str);
-  return `${MONTHS[date.getMonth()]} ${date.getDate()}`;
+  return moment(date_str).format("MMM D");
+};
+
+export const longFormatDate = (date_str) => {
+  let result = moment(date_str).format("MMM D \\at h:MM A");
+
+  if (dueClass(date_str).startsWith("overdue")) {
+    result += " (past due)";
+  }
+
+  return result;
 };
