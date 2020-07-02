@@ -48,7 +48,6 @@ export function fetchCard(id) {
 export function updateCard(card, cardId, callback) {
   return function (dispatch) {
     dispatch(updateCardRequest());
-    // TODO: implement the dispatch action handling in cards.js reducer
     apiClient.updateCard(card, cardId, (updatedCard) => {
       dispatch(updateCardSuccess(updatedCard));
 

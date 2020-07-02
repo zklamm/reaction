@@ -16,6 +16,7 @@ export default function cards(state = [], action) {
     case types.CREATE_CARD_SUCCESS:
       return state.concat(action.payload.card);
     case types.FETCH_CARD_SUCCESS:
+    case types.UPDATE_CARD_SUCCESS:
       return filterOutOldCards(state, [action.payload.card]).concat(
         action.payload.card
       );
