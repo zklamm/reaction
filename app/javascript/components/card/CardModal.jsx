@@ -81,7 +81,7 @@ class CardModal extends React.Component {
                 </ul>
                 <EditableCardDescription
                   description={this.props.card.description}
-                  onDescriptionChange={this.handleDescriptionChange}
+                  onUpdateDescription={this.handleUpdateDescription}
                 />
               </li>
               <li className="comment-section">

@@ -22,6 +22,10 @@ class EditableCardDescription extends React.Component {
     });
   };
 
+  handleUpdateDescription = () => {
+    this.onUpdateDescription(this.state.description, this.handleToggleEditing);
+  };
+
   render() {
     return (
       <form className="description">
@@ -37,10 +41,17 @@ class EditableCardDescription extends React.Component {
               autoFocus
             ></textarea>
             <div>
-              <div className="button" value="Save">
+              <div
+                className="button"
+                value="Save"
+                onClick={this.handleUpdateDescription}
+              >
                 Save
               </div>
-              <i className="x-icon icon"></i>
+              <i
+                className="x-icon icon"
+                onClick={this.handleEditDescriptionClick}
+              ></i>
             </div>
           </React.Fragment>
         ) : (
