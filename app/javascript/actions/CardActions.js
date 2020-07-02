@@ -28,8 +28,6 @@ export function updateCardSuccess(updatedCard) {
 export function createCard(card, listId, callback) {
   return function (dispatch) {
     dispatch(createCardRequest());
-    // TODO: impement the api client method
-    // TODO: implement the dispatch action handling in cards.js reducer
     apiClient.createCard(card, listId, (newCard) => {
       dispatch(createCardSuccess(newCard));
 
@@ -50,6 +48,7 @@ export function fetchCard(id) {
 export function updateCard(card, cardId, callback) {
   return function (dispatch) {
     dispatch(updateCardRequest());
+    // TODO: implement the dispatch action handling in cards.js reducer
     apiClient.updateCard(card, cardId, (updatedCard) => {
       dispatch(updateCardSuccess(updatedCard));
 

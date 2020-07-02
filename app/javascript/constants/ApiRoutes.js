@@ -5,3 +5,4 @@ export const CREATE_CARD_URL = "/api/cards";
 export const getBoardURL = (id) => `/api/boards/${id}`;
 export const updateListURL = (id) => `/api/lists/${id}`;
 export const getCardURL = (id) => `/api/cards/${id}`;
+export const updateCardURL = (id) => `/api/cards/${id}`;
