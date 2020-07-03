@@ -19,6 +19,7 @@
     "jquery": "^3.4.1",
     "minimist": "^1.2.5",
     "moment": "^2.27.0",
+    "pikaday": "^1.8.0",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EditableCardTitle from "./EditableCardTitle";
 import EditableCardDescription from "./EditableCardDescription";
+import DueDateForm from "./DueDateForm";
 import { dueClass, longFormatDate } from "../../helpers/DateFormat";
 
 class CardModal extends React.Component {
@@ -69,7 +70,12 @@ class CardModal extends React.Component {
                   {this.props.card.due_date ? (
                     <li className="due-date-section">
                       <h3>Due Date</h3>
-                      <div id="dueDateDisplay" className="overdue completed">
+                      <div
+                        id="dueDateDisplay"
+                        // TODO: className needs to be dynamic
+                        className="overdue completed"
+                        onClick={(e) => this.props.onShowPopover(e, "due-date")}
+                      >
                         <input
                           id="dueDateCheckbox"
                           type="checkbox"
@@ -220,7 +226,10 @@ class CardModal extends React.Component {
               <li className="checklist-button">
                 <i className="checklist-icon sm-icon"></i>Checklist
               </li>
-              <li className="date-button not-implemented">
+              <li
+                className="date-button"
+                onClick={(e) => this.props.onShowPopover(e, "due-date")}
+              >
                 <i className="clock-icon sm-icon"></i>Due Date
               </li>
               <li className="attachment-button not-implemented">
