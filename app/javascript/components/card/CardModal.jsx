@@ -66,18 +66,20 @@ class CardModal extends React.Component {
                       <i className="plus-icon sm-icon"></i>
                     </div>
                   </li>
-                  <li className="due-date-section">
-                    <h3>Due Date</h3>
-                    <div id="dueDateDisplay" className="overdue completed">
-                      <input
-                        id="dueDateCheckbox"
-                        type="checkbox"
-                        className="checkbox"
-                        defaultChecked=""
-                      />
-                      Aug 4 at 10:42 AM <span>(past due)</span>
-                    </div>
-                  </li>
+                  {this.props.card.due_date ? (
+                    <li className="due-date-section">
+                      <h3>Due Date</h3>
+                      <div id="dueDateDisplay" className="overdue completed">
+                        <input
+                          id="dueDateCheckbox"
+                          type="checkbox"
+                          className="checkbox"
+                          defaultChecked=""
+                        />
+                        {longFormatDate(this.props.card.due_date)}
+                      </div>
+                    </li>
+                  ) : null}
                 </ul>
                 <EditableCardDescription
                   description={this.props.card.description}
