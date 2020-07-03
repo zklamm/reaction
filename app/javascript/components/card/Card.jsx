@@ -18,9 +18,13 @@ const Card = ({ labels, cardId, title, dueDate, isDescription, completed }) => {
             <p>{title}</p>
           </div>
           <div className="card-icons">
-            <i className={`clock-icon sm-icon ${dueClass(dueDate, completed)}`}>
-              {formatDate(dueDate)}
-            </i>
+            {dueDate ? (
+              <i
+                className={`clock-icon sm-icon ${dueClass(dueDate, completed)}`}
+              >
+                {formatDate(dueDate)}
+              </i>
+            ) : null}
             {isDescription ? (
               <i className="description-icon sm-icon"></i>
             ) : null}
