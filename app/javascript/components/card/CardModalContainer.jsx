@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import moment from "moment";
 import CardModal from "./CardModal";
 import DueDateForm from "./DueDateForm";
 import Popover from "../shared/Popover";
@@ -29,6 +30,27 @@ class CardModalContainer extends React.Component {
     });
   };
 
+  handleDueDateSubmit = (e) => {
+    e.preventDefault();
+
+    const date = e.target.querySelector(".datepicker-select-date input").value;
+    const time = e.target.querySelector(".datepicker-select-time input").value;
+    const dateTime = `${date} ${time}`;
+
+    this.props.onUpdateCard(
+      { due_date: moment(dateTime, "M/D/YYYY h:mm A").toISOString() },
+      () => {
+        this.handleClosePopover();
+      }
+    );
+  };
+
+  handleDueDateRemove = () => {
+    this.props.onUpdateCard({ due_date: null }, () => {
+      this.handleClosePopover();
+    });
+  };
+
   popoverChildren() {
     const type = this.state.popover.type;
     const visible = this.state.popover.visible;
@@ -39,8 +61,8 @@ class CardModalContainer extends React.Component {
             <DueDateForm
               dueDate={this.props.card.due_date}
               onClose={this.handleClosePopover}
-              onSubmit={() => {}}
-              onRemove={() => {}}
+              onSubmit={this.handleDueDateSubmit}
+              onRemove={this.handleDueDateRemove}
             />
           );
         default:

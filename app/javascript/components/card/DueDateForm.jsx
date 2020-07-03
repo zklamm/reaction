@@ -74,11 +74,7 @@ class DueDateForm extends React.Component {
       <div>
         <header>
           <span>Change due date</span>
-          <a
-            href="#"
-            className="icon-sm icon-close"
-            onClick={this.props.onClose}
-          ></a>
+          <a className="icon-sm icon-close" onClick={this.props.onClose}></a>
         </header>
         <div className="content">
           <form onSubmit={this.props.onSubmit} onReset={this.props.onRemove}>

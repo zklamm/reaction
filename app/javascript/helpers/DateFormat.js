@@ -21,7 +21,7 @@ export const formatDate = (date_str) => {
 };
 
 export const longFormatDate = (date_str) => {
-  let result = moment(date_str).format("MMM D \\at h:MM A");
+  let result = moment(date_str).format("MMM D \\at h:mm A");
 
   if (dueClass(date_str).startsWith("overdue")) {
     result += " (past due)";

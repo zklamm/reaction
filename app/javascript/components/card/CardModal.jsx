@@ -81,6 +81,7 @@ class CardModal extends React.Component {
                           type="checkbox"
                           className="checkbox"
                           defaultChecked=""
+                          onClick={(e) => e.stopPropagation()}
                         />
                         {longFormatDate(this.props.card.due_date)}
                       </div>
