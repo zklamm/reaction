@@ -23,7 +23,16 @@ class EditableCardDescription extends React.Component {
   };
 
   handleUpdateDescription = () => {
-    this.onUpdateDescription(this.state.description, this.handleToggleEditing);
+    this.props.onUpdateDescription(
+      this.state.description,
+      this.handleToggleEditing
+    );
+  };
+
+  handleDiscardDescriptionClick = () => {
+    this.setState({
+      description: this.props.description,
+    });
   };
 
   render() {
@@ -73,8 +82,16 @@ class EditableCardDescription extends React.Component {
               }
             >
               You have unsaved edits on this field.{" "}
-              <span className="link">View edits</span> -{" "}
-              <span className="link">Discard</span>
+              <span className="link" onClick={this.handleEditDescriptionClick}>
+                View edits
+              </span>{" "}
+              -{" "}
+              <span
+                className="link"
+                onClick={this.handleDiscardDescriptionClick}
+              >
+                Discard
+              </span>
             </p>
           </React.Fragment>
         )}
